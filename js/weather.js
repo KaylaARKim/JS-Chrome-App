@@ -8,18 +8,34 @@ function onGeoSuccess(position) {
     .then((response) => response.json())
     .then((data) => {
       const city = document.querySelector("#weatherForecast span:first-child");
+      const temp = document.querySelector("#weatherForecast span:nth-child(2)");
       const weather = document.querySelector(
-        "#weatherForecast span:nth-child(2)"
+        "#weatherForecast span:last-child"
       );
-      const temp = document.querySelector("#weatherForecast span:last-child");
-      city.innerText = `Location: ${data.name}`;
-      weather.innerText = `Weather: ${data.weather[0].main}`;
-      temp.innerText = `Temperature: ${data.main.temp}`;
+      city.innerText = `${data.name}`;
+      temp.innerText = `| ${data.main.temp} °C`;
+      weather.innerText = `| ${data.weather[0].main}`;
     });
 }
 
 function onGeoError() {
-  alert("Can't find your location.");
+  //Sydney Town Hall
+  const lat = -33.873867;
+  const lon = 151.206902;
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const city = document.querySelector("#weatherForecast span:first-child");
+      const temp = document.querySelector("#weatherForecast span:nth-child(2)");
+      const weather = document.querySelector(
+        "#weatherForecast span:last-child"
+      );
+      alert("Couldn't find you location.");
+      city.innerText = `${data.name}`;
+      temp.innerText = `| ${data.main.temp} °C`;
+      weather.innerText = `| ${data.weather[0].main}`;
+    });
 }
 
 navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);

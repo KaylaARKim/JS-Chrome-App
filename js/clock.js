@@ -1,12 +1,21 @@
-const clock = document.querySelector("h2#clock");
+const dateHTML = document.querySelector("#dateHTML");
+const clockHTML = document.querySelector("#clockHTML");
 
-function getClock() {
-  const date = new Date();
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const seconds = String(date.getSeconds()).padStart(2, "0");
-  clock.innerText = `${hours}:${minutes}:${seconds}`;
+function getDateTime() {
+  const newDate = new Date();
+  const dayList = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  const date = String(newDate.getDate());
+  const month = String(newDate.getMonth() + 1).padStart(2, "0");
+  const year = String(newDate.getFullYear());
+  const day = String(dayList[newDate.getDay()]);
+
+  const hours = String(newDate.getHours()).padStart(2, "0");
+  const minutes = String(newDate.getMinutes()).padStart(2, "0");
+
+  dateHTML.innerText = `${date}/${month}/${year} (${day})`;
+  clockHTML.innerText = `${hours}:${minutes}`;
 }
 
-getClock();
-setInterval(getClock, 1000);
+getDateTime();
+setInterval(getDateTime, 10000);

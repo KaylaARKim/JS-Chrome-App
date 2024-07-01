@@ -17,9 +17,27 @@ function onLoginSubmit(event) {
 
 function paintGreetings(username) {
   greeting.innerText = `Hi ${username}`;
+
+  const logOutBtn = document.createElement("i");
+  logOutBtn.classList.add(
+    "fa-solid",
+    "fa-arrow-right-from-bracket",
+    "fa-xs",
+    "logOutBtn"
+  );
+  logOutBtn.style.cursor = "pointer";
+  logOutBtn.addEventListener("click", onLogoutClick);
+
   greeting.classList.remove(HIDDEN_CLASSNAME);
   todoForm.classList.remove(HIDDEN_CLASSNAME);
   todoList.classList.remove(HIDDEN_CLASSNAME);
+
+  greeting.appendChild(logOutBtn);
+}
+
+function onLogoutClick() {
+  localStorage.removeItem(USERNAME_KEY);
+  location.reload();
 }
 
 const savedUserName = localStorage.getItem(USERNAME_KEY);

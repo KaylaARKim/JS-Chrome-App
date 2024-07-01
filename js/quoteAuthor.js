@@ -29,8 +29,8 @@ const quotes = [
     author: "Mae West",
   },
   {
-    quote: "Never go on trips with anyone you do ntot love.",
-    author: "Hemmingway",
+    quote: "Never go on trips with anyone you do not love.",
+    author: "Ernest Hemingway",
   },
   {
     quote: "We wander for distraction, but we travel for fulfilment.",
@@ -42,10 +42,10 @@ const quotes = [
   },
 ];
 
-const quote = document.querySelector("#quote div:first-child");
-const author = document.querySelector("#quote div:last-child");
+const quote = document.querySelector("#quoteAuthor div:first-child");
+const author = document.querySelector("#quoteAuthor div:last-child");
 
-const todaysQuate = quotes[Math.floor(Math.random() * quotes.length)];
+const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
-quote.innerText = todaysQuate.quote;
-author.innerText = todaysQuate.author;
+quote.innerText = todaysQuote.quote;
+author.innerText = todaysQuote.author;

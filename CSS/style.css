@@ -12,6 +12,7 @@ body {
   background-position: center;
   backdrop-filter: brightness(70%);
   color: rgb(211, 211, 211);
+  font-family: monospace;
 }
 
 #container {

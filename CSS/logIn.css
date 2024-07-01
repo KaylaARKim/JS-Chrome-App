@@ -7,23 +7,34 @@
 }
 
 #login-form input {
-  width: 250px;
+  width: 400px;
   margin-top: 70px;
   margin-bottom: 50px;
   border: none;
   border-bottom: 2px solid rgb(211, 211, 211);
   background: none;
   text-align: center;
+  font-size: 30px;
+  color: rgb(211, 211, 211);
+  font-family: monospace;
 }
 
 #login-form input[type="submit"] {
-  width: 50px;
+  width: 55px;
   border: none;
-  font-size: 10px;
+  font-size: 15px;
   background: none;
-  color: rgb(211, 211, 211);
+  color: rgb(200, 200, 200);
+  cursor: pointer;
 }
 
 .logOutBtn {
   margin-left: 10px;
+}
+
+#login-form button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(200, 200, 200);
 }

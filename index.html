@@ -3,16 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do App</title>
     <link rel="stylesheet" href="CSS/style.css" />
     <link rel="stylesheet" href="CSS/dateClock.css" />
-    <link rel="stylesheet" href="CSS/logIn.css" />
-    <link rel="stylesheet" href="CSS/quotes.css" />
-    <link rel="stylesheet" href="CSS/toDo.css" />
-    <link rel="stylesheet" href="CSS/weather.css" />
-    <title>Momentum App</title>
+    <link rel="stylesheet" href="CSS/login.css" />
+    <link rel="stylesheet" href="CSS/quoteAuthor.css" />
+    <link rel="stylesheet" href="CSS/todo.css" />
+    <link rel="stylesheet" href="CSS/locationWeather.css" />
   </head>
   <body>
     <div id="container">
+      <!-- Login Form -->
       <form id="login-form" class="hidden">
         <input
           required
@@ -20,16 +21,21 @@
           type="text"
           placeholder="What is your name?"
         />
-        <input type="submit" value="Log In" />
+        <button type="submit">
+          <i class="fa-solid fa-arrow-right-to-bracket fa-lg"></i>
+        </button>
       </form>
 
+      <!-- Greeting -->
       <div id="greeting" class="hidden"></div>
 
+      <!-- Date and Clock -->
       <div id="dateClock">
-        <div id="dateHTML">d/mm/yyyy (days)</div>
+        <div id="dateHTML">d/mm/yyyy (day)</div>
         <div id="clockHTML">hh:mm</div>
       </div>
 
+      <!-- To-Do List -->
       <div id="todo">
         <form id="todo-form" class="hidden">
           <input
@@ -37,29 +43,36 @@
             placeholder="What do you need to do today?"
             required
           />
+          <i
+            class="fa-solid fa-arrow-turn-down fa-rotate-90 fa-2xs"
+            id="todo-update"
+          ></i>
+          <i class="fa-solid fa-eraser fa-2xs" id="todo-clear"></i>
         </form>
-
         <ul id="todo-list" class="hidden"></ul>
       </div>
 
-      <div id="weatherForecast">
+      <!-- Location and Weather -->
+      <div id="locationWeather">
         <span></span>
         <span></span>
         <span></span>
       </div>
 
-      <div id="quote">
+      <!-- Quote and Author -->
+      <div id="quoteAuthor">
         <div></div>
         <div></div>
       </div>
     </div>
 
-    <script src="js/logIn.js"></script>
+    <!-- Scripts -->
+    <script src="js/login.js"></script>
     <script src="js/dateClock.js"></script>
-    <script src="js/quotes.js"></script>
+    <script src="js/quoteAuthor.js"></script>
     <script src="js/background.js"></script>
-    <script src="js/toDo.js"></script>
-    <script src="js/weather.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/locationWeather.js"></script>
     <script
       src="https://kit.fontawesome.com/838825bd0c.js"
       crossorigin="anonymous"

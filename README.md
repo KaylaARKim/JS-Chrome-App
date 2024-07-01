@@ -1,6 +1,6 @@
 # To Do Application Clone
 >A project to clone the functionality of the To-Do app.</br>
->[https://github.com/KaylaARKim/JS-Chrome-App.git](https://kaylaarkim.github.io/JS-Chrome-App/)
+>https://kaylaarkim.github.io/To-Do-Chrome-Application/
 
 
 

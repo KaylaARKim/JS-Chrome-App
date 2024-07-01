@@ -10,7 +10,8 @@ body {
   margin: 0;
   background-size: cover;
   background-position: center;
-  backdrop-filter: blur(2px);
+  backdrop-filter: brightness(70%);
+  color: rgb(211, 211, 211);
 }
 
 #container {
@@ -21,5 +22,5 @@ body {
 }
 
 ::placeholder {
-  color: rgb(44, 44, 44);
+  color: rgb(211, 211, 211);
 }

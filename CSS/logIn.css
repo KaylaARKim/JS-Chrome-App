@@ -11,7 +11,7 @@
   margin-top: 70px;
   margin-bottom: 50px;
   border: none;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(211, 211, 211);
   background: none;
   text-align: center;
 }
@@ -21,6 +21,7 @@
   border: none;
   font-size: 10px;
   background: none;
+  color: rgb(211, 211, 211);
 }
 
 .logOutBtn {

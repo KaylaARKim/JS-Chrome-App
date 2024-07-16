@@ -98,11 +98,7 @@ main {
   top: 10rem;
 }
 
-.login--submit {
-  /* Additional styles for the login submit button can be added here */
-}
-
-/* To-do Form section */
+/* Todo Form section */
 #todo {
   text-align: center;
   font-size: 1.3rem;
@@ -163,4 +159,37 @@ footer {
   bottom: 0;
   padding-bottom: 1rem;
   font-size: 0.8rem;
+}
+
+/* Media */
+@media screen and (max-width: 768px) {
+  input {
+    font-size: 0.9rem;
+    width: 15rem;
+  }
+
+  header {
+    font-size: 0.8rem;
+  }
+
+  .greeting--logout,
+  .greeting--smile {
+    font-size: 0.6rem;
+  }
+
+  #dateClock {
+    font-size: 1.2rem;
+  }
+
+  .todo--form {
+    padding-left: 2.2rem;
+  }
+
+  .todo--form i {
+    font-size: 0.5rem;
+  }
+
+  footer {
+    font-size: 0.6rem;
+  }
 }

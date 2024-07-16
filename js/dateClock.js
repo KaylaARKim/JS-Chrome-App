@@ -1,5 +1,5 @@
-const dateHTML = document.querySelector("#dateHTML");
-const clockHTML = document.querySelector("#clockHTML");
+const dateInitial = document.querySelector(".dateClock--date");
+const clockInitial = document.querySelector(".dateClock--clock");
 
 function getDateTime() {
   const newDate = new Date();
@@ -13,9 +13,12 @@ function getDateTime() {
   const hours = String(newDate.getHours()).padStart(2, "0");
   const minutes = String(newDate.getMinutes()).padStart(2, "0");
 
-  dateHTML.innerText = `${date}/${month}/${year} (${day})`;
-  clockHTML.innerText = `${hours}:${minutes}`;
+  dateInitial.innerText = `${date}/${month}/${year} (${day})`;
+  clockInitial.innerText = `${hours}:${minutes}`;
 }
 
+// Initialise the date and time display
 getDateTime();
+
+// Update the date and time every 10 seconds
 setInterval(getDateTime, 10000);

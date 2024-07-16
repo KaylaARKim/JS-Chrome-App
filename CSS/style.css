@@ -1,3 +1,14 @@
+/* Global */
+:root {
+  /* App Colors */
+  --color-primary: var(--color-white);
+  --color-variant: var(--color-gray);
+
+  /* Colors */
+  --color-white: rgb(211, 211, 211);
+  --color-gray: rgb(107, 107, 107);
+}
+
 .hidden {
   display: none;
 }
@@ -11,17 +22,145 @@ body {
   background-size: cover;
   background-position: center;
   backdrop-filter: brightness(70%);
-  color: rgb(211, 211, 211);
+  color: var(--color-primary);
   font-family: monospace;
-}
-
-#container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  cursor: default;
 }
 
 ::placeholder {
-  color: rgb(211, 211, 211);
+  color: var(--color-primary);
+}
+
+i {
+  cursor: pointer;
+}
+
+button {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+}
+
+input {
+  border: none;
+  border-bottom: 2px solid var(--color-primary);
+  background: none;
+  text-align: center;
+  color: var(--color-primary);
+  font-family: monospace;
+  font-size: 1.5rem;
+  width: 26rem;
+}
+
+header,
+main,
+footer {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+}
+
+/* Header - location, weather, and greeting */
+header {
+  justify-content: space-between;
+  top: 0;
+  padding-top: 1rem;
+  font-size: 1rem;
+}
+
+/* Main section */
+main {
+  position: absolute;
+  flex-direction: column;
+  top: 5rem;
+}
+
+/* Greeting section */
+.greeting--logout,
+.greeting--smile {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* Date and Clock section */
+#dateClock {
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+/* Login Form section */
+#login {
+  position: relative;
+  top: 10rem;
+}
+
+.login--submit {
+  /* Additional styles for the login submit button can be added here */
+}
+
+/* To-do Form section */
+#todo {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.todo--form {
+  padding-left: 3rem;
+}
+
+.todo--list {
+  padding-right: 3rem;
+  max-height: 55vh;
+  overflow-y: auto;
+}
+
+.todo--list__crossOut {
+  text-decoration: line-through;
+}
+
+.todo--list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+  word-wrap: break-word;
+  max-width: 500px;
+}
+
+.todo--list--bullet {
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.5rem;
+  width: 5%;
+}
+
+.todo--list--todo {
+  cursor: pointer;
+  text-align: left;
+  width: 90%;
+  font-size: 1.2rem;
+}
+
+.todo--list li i {
+  font-size: 0.5rem;
+}
+
+.todo--list::-webkit-scrollbar {
+  width: 0.15rem;
+}
+
+.todo--list::-webkit-scrollbar-thumb {
+  background-color: var(--color-variant);
+  border-radius: 10px;
+}
+
+/* Footer - quote and author */
+footer {
+  bottom: 0;
+  padding-bottom: 1rem;
+  font-size: 0.8rem;
 }

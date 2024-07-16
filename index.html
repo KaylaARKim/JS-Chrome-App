@@ -5,66 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do App</title>
     <link rel="stylesheet" href="CSS/style.css" />
-    <link rel="stylesheet" href="CSS/dateClock.css" />
-    <link rel="stylesheet" href="CSS/login.css" />
-    <link rel="stylesheet" href="CSS/quoteAuthor.css" />
-    <link rel="stylesheet" href="CSS/todo.css" />
-    <link rel="stylesheet" href="CSS/locationWeather.css" />
   </head>
   <body>
-    <div id="container">
-      <!-- Login Form -->
-      <form id="login-form" class="hidden">
-        <input
-          required
-          maxlength="15"
-          type="text"
-          placeholder="What is your name?"
-        />
-        <button type="submit">
-          <i class="fa-solid fa-arrow-right-to-bracket fa-lg"></i>
-        </button>
-      </form>
+    <header>
+      <!-- Location and Weather -->
+      <section id="locationWeather">
+        <span aria-label="current location"></span>
+        <span aria-label="current temperature"></span>
+        <span aria-label="current weather"></span>
+      </section>
 
       <!-- Greeting -->
-      <div id="greeting" class="hidden"></div>
+      <section id="greeting" class="hidden"></section>
+    </header>
 
+    <main>
       <!-- Date and Clock -->
-      <div id="dateClock">
-        <div id="dateHTML">d/mm/yyyy (day)</div>
-        <div id="clockHTML">hh:mm</div>
-      </div>
+      <section id="dateClock">
+        <div class="dateClock--date">d/mm/yyyy (day)</div>
+        <div class="dateClock--clock">hh:mm</div>
+      </section>
 
-      <!-- To-Do List -->
-      <div id="todo">
-        <form id="todo-form" class="hidden">
+      <!-- Login Form -->
+      <section id="login" class="hidden">
+        <form class="login--form">
+          <input
+            required
+            maxlength="15"
+            type="text"
+            placeholder="What is your name?"
+          />
+          <button type="submit" class="login--submit">
+            <i class="fa-solid fa-arrow-right-to-bracket fa-lg"></i>
+          </button>
+        </form>
+      </section>
+
+      <!-- Todo List -->
+      <section id="todo" class="hidden">
+        <form class="todo--form">
           <input
             type="text"
             placeholder="What do you need to do today?"
             required
           />
-          <i
-            class="fa-solid fa-arrow-turn-down fa-rotate-90 fa-2xs"
-            id="todo-update"
-          ></i>
-          <i class="fa-solid fa-eraser fa-2xs" id="todo-clear"></i>
+          <button>
+            <i
+              class="fa-solid fa-arrow-turn-down fa-rotate-90 fa-sm todo--submit"
+            ></i>
+          </button>
+          <i class="fa-solid fa-eraser fa-2xs todo--clear"></i>
         </form>
-        <ul id="todo-list" class="hidden"></ul>
-      </div>
+        <ul class="todo--list"></ul>
+      </section>
+    </main>
 
-      <!-- Location and Weather -->
-      <div id="locationWeather">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
+    <footer>
       <!-- Quote and Author -->
-      <div id="quoteAuthor">
-        <div></div>
-        <div></div>
-      </div>
-    </div>
+      <section id="quoteAuthor">
+        <span>quote</span> / <span>author</span>
+      </section>
+    </footer>
 
     <!-- Scripts -->
     <script src="js/login.js"></script>

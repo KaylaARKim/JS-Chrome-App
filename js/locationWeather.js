@@ -40,4 +40,5 @@ function onGeoError() {
     });
 }
 
+// Get the current position of the user
 navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError);

@@ -1,75 +1,87 @@
-const toDoForm = document.getElementById("todo-form");
-const toDoInput = toDoForm.querySelector("input");
-const toDoList = document.getElementById("todo-list");
-const toDoUpdate = document.getElementById("todo-update");
-const toDoClear = document.getElementById("todo-clear");
+const todoForm = document.querySelector(".todo--form");
+const todoInput = todoForm.querySelector("input");
+const todoList = document.querySelector(".todo--list");
+const todoClearButton = document.querySelector(".todo--clear");
 
-const TODOS_KEY = "toDos";
+let todos = [];
+const TODOS_KEY = "todos";
+const savedTodos = localStorage.getItem(TODOS_KEY);
 
-let toDos = [];
-
-function saveToDos() {
-  localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
-}
-
-function crossOutToDo(event) {
-  const li = event.target;
-  li.classList.toggle("crossOut");
-}
-
-function deleteToDo(event) {
-  const liDel = event.target.parentElement;
-  liDel.remove();
-  toDos = toDos.filter((toDo) => toDo.id !== parseInt(liDel.id));
-  saveToDos();
-}
-
-function paintToDo(newToDo) {
-  const li = document.createElement("li");
-  li.id = newToDo.id;
-  li.addEventListener("click", crossOutToDo);
-
-  const span = document.createElement("span");
-  span.innerText = newToDo.text;
-
-  const button = document.createElement("button");
-  button.innerText = "X";
-  button.addEventListener("click", deleteToDo);
-
-  li.appendChild(span);
-  li.appendChild(button);
-  toDoList.appendChild(li);
-}
-
-function handleToDoSubmit(event) {
+// Update 'todos' in Local Storage
+function handleTodoSubmit(event) {
   event.preventDefault();
-  const newToDo = toDoInput.value;
-  toDoInput.value = "";
-  const newToDoObj = {
-    text: newToDo,
+  const newTodo = todoInput.value;
+  todoInput.value = "";
+  const newTodoObj = {
+    text: newTodo,
     id: Date.now(),
   };
-  toDos.push(newToDoObj);
-  paintToDo(newToDoObj);
-  saveToDos();
+  todos.push(newTodoObj);
+  paintTodo(newTodoObj);
+  saveTodos();
 }
 
-toDoForm.addEventListener("submit", handleToDoSubmit);
-toDoUpdate.addEventListener("click", () => {
-  toDoForm.dispatchEvent(new Event("submit"));
-});
-toDoClear.addEventListener("click", clearToDoList);
+todoForm.addEventListener("submit", handleTodoSubmit);
 
-const savedToDos = localStorage.getItem(TODOS_KEY);
-
-if (savedToDos !== null) {
-  const parsedToDos = JSON.parse(savedToDos);
-  toDos = parsedToDos;
-  parsedToDos.forEach(paintToDo);
+// Save 'todos' array in Local Storage
+function saveTodos() {
+  localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
 }
 
-function clearToDoList() {
-  toDos = [];
-  toDoList.innerText = "";
-  saveToDos();
+if (savedTodos !== null) {
+  const parsedTodos = JSON.parse(savedTodos);
+  todos = parsedTodos;
+  parsedTodos.forEach(paintTodo);
 }
+
+// Display updated todo
+function paintTodo(newTodo) {
+  const list = document.createElement("li");
+  list.id = newTodo.id;
+
+  const spanBullet = document.createElement("span");
+  spanBullet.innerText = "•";
+  spanBullet.classList.add("todo--list--bullet");
+
+  const spanTodo = document.createElement("span");
+  spanTodo.innerText = newTodo.text;
+  spanTodo.classList.add("todo--list--todo");
+
+  spanBullet.addEventListener("click", () =>
+    crossOutTodo(spanBullet, spanTodo)
+  );
+  spanTodo.addEventListener("click", () => crossOutTodo(spanBullet, spanTodo));
+
+  const buttonDelete = document.createElement("i");
+  buttonDelete.classList.add("fa-solid", "fa-xmark");
+  buttonDelete.addEventListener("click", deleteTodo);
+
+  list.appendChild(spanBullet);
+  list.appendChild(spanTodo);
+  list.appendChild(buttonDelete);
+  todoList.appendChild(list);
+}
+
+// Cross out todo item
+function crossOutTodo(spanBullet, spanTodo) {
+  spanTodo.classList.toggle("todo--list__crossOut");
+}
+
+// Delete todo item
+function deleteTodo(event) {
+  const listDelete = event.target.closest("li");
+  if (listDelete) {
+    listDelete.remove();
+    todos = todos.filter((todo) => todo.id !== parseInt(listDelete.id));
+    saveTodos();
+  }
+}
+
+// Clear all todo items
+function clearTodoList() {
+  todos = [];
+  todoList.innerText = "";
+  saveTodos();
+}
+
+todoClearButton.addEventListener("click", clearTodoList);
